@@ -45,33 +45,46 @@ System.register('cosname/humantime/helpers/moreHumanTime', [], function (_export
 });;
 'use strict';
 
-System.register('cosname/humantime/main', ['flarum/extend', 'flarum/components/UserCard', 'cosname/humantime/helpers/moreHumanTime'], function (_export, _context) {
+System.register('cosname/humantime/main', ['flarum/extend', 'flarum/helpers/icon', 'flarum/components/UserCard', 'cosname/humantime/helpers/moreHumanTime'], function (_export, _context) {
   "use strict";
 
-  var extend, UserCard, moreHumanTime;
+  var extend, icon, UserCard, moreHumanTime;
   return {
     setters: [function (_flarumExtend) {
       extend = _flarumExtend.extend;
+    }, function (_flarumHelpersIcon) {
+      icon = _flarumHelpersIcon.default;
     }, function (_flarumComponentsUserCard) {
       UserCard = _flarumComponentsUserCard.default;
     }, function (_cosnameHumantimeHelpersMoreHumanTime) {
       moreHumanTime = _cosnameHumantimeHelpersMoreHumanTime.default;
     }],
     execute: function () {
-
+      /*
+      * Copyright (c) 2017 Yixuan Qiu
+      */
       app.initializers.add('cosname-humantime', function () {
-        // Modify the 'joined' item that represents the date
+        // Modify the 'joined' and 'lastSeen' items that represent the dates
         extend(UserCard.prototype, 'infoItems', function (items) {
+
+          var user = this.props.user;
+          var lastSeenTime = user.lastSeenTime();
+          // Time joined
           if (items.has('joined')) {
-            var user = this.props.user;
-            console.log(user);
             var txt = app.translator.trans('core.forum.user.joined_date_text', { ago: moreHumanTime(user.joinTime()) });
             items.replace('joined', txt);
           }
+          // Time last seen
+          if (lastSeenTime && items.has('lastSeen')) {
+            var online = user.isOnline();
+            items.replace('lastSeen', m(
+              'span',
+              { className: 'UserCard-lastSeen' + (online ? ' online' : '') },
+              online ? [icon('circle'), ' ', app.translator.trans('core.forum.user.online_text')] : [icon('clock-o'), ' ', moreHumanTime(lastSeenTime)]
+            ));
+          }
         });
-      }); /*
-          * Copyright (c) 2017 Yixuan Qiu
-          */
+      });
     }
   };
 });
