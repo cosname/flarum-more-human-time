@@ -10,6 +10,7 @@ import moreHumanTimeUtil from 'cosname/humantime/helpers/moreHumanTimeUtil';
 import moreHumanTime from 'cosname/humantime/helpers/moreHumanTime';
 import moreHumanTimeTimer from 'cosname/humantime/helpers/moreHumanTimeTimer';
 
+// Replace the update timer
 if (app.initializers.has('humanTime')) {
   app.initializers.replace('humanTime', moreHumanTimeTimer);
 }

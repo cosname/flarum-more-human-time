@@ -104,6 +104,8 @@ System.register('cosname/humantime/main', ['flarum/extend', 'flarum/helpers/icon
       moreHumanTimeTimer = _cosnameHumantimeHelpersMoreHumanTimeTimer.default;
     }],
     execute: function () {
+
+      // Replace the update timer
       /*
       * Copyright (c) 2017 Yixuan Qiu
       */
