@@ -1,14 +1,14 @@
 /*
-* Copyright (c) 2017 Yixuan Qiu
+* Copyright (c) 2017-2018 Yixuan Qiu
 */
 import { extend } from 'flarum/extend';
 import icon from 'flarum/helpers/icon';
 import UserCard from 'flarum/components/UserCard';
 import TerminalPost from 'flarum/components/TerminalPost';
 import PostMeta from 'flarum/components/PostMeta';
-import moreHumanTimeUtil from 'cosname/humantime/helpers/moreHumanTimeUtil';
-import moreHumanTime from 'cosname/humantime/helpers/moreHumanTime';
-import moreHumanTimeTimer from 'cosname/humantime/helpers/moreHumanTimeTimer';
+import moreHumanTimeUtil from './helpers/moreHumanTimeUtil';
+import moreHumanTime from './helpers/moreHumanTime';
+import moreHumanTimeTimer from './helpers/moreHumanTimeTimer';
 
 // Replace the update timer
 if (app.initializers.has('humanTime')) {

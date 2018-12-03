@@ -1,4 +1,4 @@
-import moreHumanTimeUtil from 'cosname/humantime/helpers/moreHumanTimeUtil';
+import moreHumanTimeUtil from './moreHumanTimeUtil';
 
 function updateHumanTimes() {
   $('[data-humantime]').each(function() {

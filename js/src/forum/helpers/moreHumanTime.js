@@ -1,4 +1,4 @@
-import moreHumanTimeUtil from 'cosname/humantime/helpers/moreHumanTimeUtil';
+import moreHumanTimeUtil from './moreHumanTimeUtil';
 
 /**
  * The `moreHumanTime` helper displays a time in a (more) human-friendly time-ago format
