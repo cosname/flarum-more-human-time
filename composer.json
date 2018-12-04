@@ -26,7 +26,7 @@
         "flarum-extension": {
             "title": "More Human Time",
             "icon": {
-                "name": "calendar",
+                "name": "fas fa-calendar-alt",
                 "backgroundColor": "#489fdf",
                 "color": "#fff"
             }
